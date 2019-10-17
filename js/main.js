@@ -25,7 +25,6 @@ let allGenres = {
     "19": "Western"
 }
 
-
 axios.get('https://movie-list.alphacamp.io/api/v1/movies')
 .then(response => {
   allMovieData = response.data.results
@@ -76,11 +75,11 @@ function movieFilter(genre) {
   printMovie(results)
 }
 
-// 點下去每個genres按鈕，把每一筆電影資料透過.filter產生新陣列，丟去printMovie印出來
+// 監聽左邊每一個genre按鈕
 /*
 發現點下去後，有時候要再點一次才會跑出來，記得好像有個助教回應過我類似問題，
 是因為axios不知道甚麼時候讀取完成，導致有時候點下去會有資料，有時候又會沒資料。
-那我為了確保每次點都一定會有資料出來，若我把這個監聽器放到前面axios.then裡面，這樣算是一種對的解法嗎?
+如果我為了確保每次點都一定會有資料出來，把這個監聽器放到前面axios.then裡面，這樣算是一種對的解法嗎?
 */
 genreList.addEventListener('click', function(){ 
   movieFilter(event.target.id) 
