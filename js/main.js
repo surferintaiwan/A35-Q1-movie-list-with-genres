@@ -48,13 +48,21 @@ function printMovie(movieData) {
     </div>
   `
   const posterURL = 'https://movie-list.alphacamp.io/posters/'
-  movieData.forEach(eachMovie => {
+  if (movieData.length === 0) {
+    movieHTML = `
+      <div class="alert alert-danger" role="alert">
+        不好意思，目前沒有此類別的電影!
+      </div>
+    `
+    console.log(123)
+  } else {
+    movieData.forEach(eachMovie => {
     movieHTML += `
             <div class="col-3" id="nav-tabContent">
-              <div>
-              <img class="card-img-top" src="${posterURL}${eachMovie.image}" alt="">
+              <div class="img-size">
+                <img class="card-img-top" src="${posterURL}${eachMovie.image}" alt="">
               </div>
-              <h3>${eachMovie.title}</h3>
+              <h5>${eachMovie.title}</h5>
               <div>           
     `
     
@@ -65,7 +73,8 @@ function printMovie(movieData) {
     })
     movieHTML += genresHTML + endingHTML
     genresHTML = `` // 避免將電影的genres帶到下一個電影裡，進行清空動作
-  })
+    })  
+  }
   movieList.innerHTML = movieHTML
 }
 

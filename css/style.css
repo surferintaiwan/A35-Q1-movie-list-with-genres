@@ -1,4 +1,12 @@
 span {
 	display: inline-block;
 	margin:4px;
+	font-size: 10px;
+}
+
+.img-size {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height: 275.63px;
 }
